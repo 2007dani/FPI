@@ -1,7 +1,11 @@
 from django.shortcuts import render
+
+
 from django.http import HttpResponse
 
 # Create your views here.
+
 def index(request):
-    return HttpResponse("Hi I am Danial")
+    context={}
+    return render(request, "FPPI/index.html",context=context)
     
