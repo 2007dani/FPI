@@ -25,12 +25,13 @@ SECRET_KEY = '02!@!^qwm=8f8xutnbhsg@4&^by=chft$_qwi0wt@iqmm$02-n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'FPPI',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
