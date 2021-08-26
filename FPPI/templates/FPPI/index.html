@@ -1,6 +1,57 @@
 <!DOCTYPE html>
-<head></head>
-<body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="author" content="Danial Jamali">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
     {% load static %}
-    <img src="{% static 'jpg/hill.jpg' %}" alt="دماوند" width="40%">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index-style.css' %}">
+    <script>
+        function click(id) {
+            window.location.assign("index" + "/" + id)
+        }
+    </script>
+
+</head>
+
+<body>
+<div>
+    <div id="list">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="add/">Add</a></li>
+            <li><a href="edit/">Edit</a></li>
+        </ul>
+    </div>
+
+
+</div>
+<div>
+    {% for i in Person %}
+
+
+        <div class="Per" onclick="click(window.location.assign('index/{{ i.id }}'))">
+
+            <div>
+                <div><a class="header">{{ i.Name }}</a></div>
+            </div>
+            <div>
+                <div class="div_info"><a>Father</a></div>
+                <div class="div_info"><a>Mother</a></div>
+            </div>
+            <div class="meli">
+                <div><a>00</a></div>
+            </div>
+
+        </div>
+
+
+    {% endfor %}
+</div>
+
+
 </body>
+</html>

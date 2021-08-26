@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add.css' %}">
+</head>
+<body>
+<h1>Add person to FPI</h1>
+
+    <div id="div">
+        <form method="post" action="{% url 'S' %}">
+        {% csrf_token %}
+          <label for="name">Name:</label>
+        <input type="text" name="name">
+        <br>
+        <br>
+           <label for="family">Family:</label>
+        <input type="text" name="family">
+         <br>
+         <br>
+           <label for="code">codeMeli:</label>
+        <input type="text" name="code" >
+        <br>
+        <br>
+        <pre style="font-size: 20px">Sex:</pre>
+        <select name="sex">
+            <option value="Man">Man</option>
+            <option value="Woman">Woman</option>
+        </select>
+        <pre style="font-size: 20px">Father:</pre>
+        <select name="father">
+            <option value="null">null</option>
+            {% for f in f_list %}
+                <option value="{{ f.id }}">{{ f.Name }} {{ f.Family }}  {{ f.Nathinalcode }}</option>
+            {% endfor %}>
+        </select>
+        <pre style="font-size: 20px">Mother:</pre>
+        <select name="mother">
+        <option value="null">null</option>
+            {% for m in m_list %}
+                <option value="{{ m.id }}">{{ m.Name }} {{ m.Family }}  {{ m.Nathinalcode }}</option>
+            {% endfor %}
+        </select>
+      <pre style="font-size: 20px">Birthday:</pre>
+        <input type="date" name="birthday">
+        <button type="submit" id="button" style="border: 0px solid #FFFFFF">
+            <img id="img" src="{% static 'jpg/button.png' %}" style="width: 200px">
+        </button>
+    </form></div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+
+ul {
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #6b789d;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #4192fd;
+}
+.Per:hover{
+    background-color: #d6faff;
+}
+.Per{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5px;
+    width: 99.80%;
+    height: 170px;
+    background-color: whitesmoke;
+    border: 1px   rgb(161, 161, 161);
+    box-shadow: 1px 1px 5px rgb(168, 168, 168);
+    transition: background-color 1s, width 0.5s;
+
+}
+
+.div_info{
+    width: 50%;
+    text-align: center;
+    margin-top: 2%;
+    font-size: 25px;
+    float: left;
+
+
+}
+div {
+    text-align: center;
+}
+.meli{
+    margin-top: 85px;
+    font-size: xx-large;
+}
+.header{
+    font-size: xx-large;
+}
+#list{
+    position:revert;
+}

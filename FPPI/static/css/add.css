@@ -1,0 +1,33 @@
+label{
+    font-size: 20px;
+}
+div{
+    width: 70%;
+    height: 800px;
+    background-color: #f1f3ff;
+    margin: 78px auto auto auto;
+    overflow: auto;
+
+}
+input{
+    width: 98%;
+}
+select{
+    width: 98%;
+    font-size: 20px;
+
+}
+h1{
+
+    text-align: center;
+
+}
+#button{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 10px;
+}
+#img:hover{
+    background-color: #4192fd;
+}
