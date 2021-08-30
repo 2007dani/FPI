@@ -5,6 +5,7 @@ import os
 from django.http import HttpResponse
 # Create your views here.
 from FPPI import models
+import os
 
 
 def index(request):
@@ -29,6 +30,7 @@ def Sumbit(request):
     sex = request.POST['sex']
     birth = request.POST['birthday']
     father = request.POST['father']
+
     if father == 'null':
         father = None
     else:
@@ -40,39 +42,33 @@ def Sumbit(request):
         mother = int(father)
 
     x = models.Person(Name=name, Family=family, CodeNational=code, sex=sex, Father_id=father, Mother=mother,
-                      Birth=birth)
-    try:
-        f = models.Father.objects.get(pk=father)
-        for i in f.person_set.all():
-            if i.sex == "Man":
-                x.brother_set.add(id=i.id)
-    except:
-        pass
+                      Birth=birth, )
 
-    x.save()
-    y = models.Father(Name=name, Family=family, CodeNational=code, Birth=birth, person_id=x.id)
-    y.save()
+    if sex == "Man":
+        x.save()
+        y = models.Father(Name=name, Family=family, CodeNational=code, Birth=birth, person_id=x.id)
+        y.save()
 
-    z = models.Brother(Name=name, Family=family, CodeNational=code, Birth=birth, )
-    z.save()
+        z = models.Brother(Name=name, Family=family, CodeNational=code, Birth=birth, )
+        z.save()
 
-    a = models.Son(Name=name, Family=family, CodeNational=code, Birth=birth, )
-    a.save()
+        a = models.Son(Name=name, Family=family, CodeNational=code, Birth=birth, )
+        a.save()
 
-    b = models.Souse(Name=name, Family=family, CodeNational=code, Birth=birth, )
-    b.save()
+        b = models.Souse(Name=name, Family=family, CodeNational=code, Birth=birth, )
+        b.save()
 
     if sex == "Woman":
         x = models.Person(Name=name, Family=family, CodeNational=code, sex=sex, Father=father, Mother=mother,
                           Birth=birth)
         x.save()
-        y = models.Mother(Name=name, Family=family, CodeNational=code, Birth=birth,person_id=x.id)
+        y = models.Mother(Name=name, Family=family, CodeNational=code, Birth=birth, person_id=x.id)
         y.save()
-        z = models.Sister(Name=name, Family=family, CodeNational=code, Birth=birth,)
+        z = models.Sister(Name=name, Family=family, CodeNational=code, Birth=birth, )
         z.save()
         a = models.Dather(Name=name, Family=family, CodeNational=code, Birth=birth, )
         a.save()
-        b = models.Souse(Name=name, Family=family, CodeNational=code, Birth=birth,)
+        b = models.Souse(Name=name, Family=family, CodeNational=code, Birth=birth, )
         b.save()
 
         ####################################################################################
@@ -81,4 +77,20 @@ def Sumbit(request):
 
 
 def Show(request, id):
-    return HttpResponse(id)
+    per = models.Person.objects.get(pk=id)
+    try:
+        mother = models.Mother.objects.get(pk=per.Mother_id)
+        father = models.Father.objects.get(pk=per.Father_id)
+    except:
+        class null:
+            Name = "نامعلوم"
+
+        mother = null()
+        father = null()
+
+    context = {
+        'person': per,
+        'mother': mother,
+        'father': father,
+    }
+    return render(request, "FPPI/show.html", context)

@@ -1,0 +1,21 @@
+body{
+    direction: rtl;
+}
+#mother_div{
+    width: 99%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #f3fdff;
+    height: 300px;
+    padding: 10px;
+}
+#name{
+    font-size: 40px;
+    color: black;
+}
+.parent{
+    width: 50%;
+    float: right;
+    height: 100px;
+    font-size: 25px;
+}

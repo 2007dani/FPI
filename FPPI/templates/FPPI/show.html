@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ person.Name }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/show-style.css' %}">
+</head>
+<body>
+
+    <div id="mother_div">
+
+        <a id="name"> {{ person.Name }} {{ person.Family }}</a>
+        <hr>
+        <br>
+        <div>
+            <div class="parent">{{ mother.Name }}</div>
+            <div class="parent">{{ father.Name }}</div>
+        </div>
+
+    </div>
+
+</body>
+</html>

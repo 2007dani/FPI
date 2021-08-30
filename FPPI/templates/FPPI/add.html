@@ -7,47 +7,54 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/add.css' %}">
 </head>
 <body>
-<h1>Add person to FPI</h1>
 
-    <div id="div">
-        <form method="post" action="{% url 'S' %}">
+<div id="div">
+    <form method="post" action="{% url 'S' %}">
         {% csrf_token %}
-          <label for="name">Name:</label>
+        <label for="name">اسم:</label>
         <input type="text" name="name">
         <br>
         <br>
-           <label for="family">Family:</label>
+        <label for="family">نام خانوادگی:</label>
         <input type="text" name="family">
-         <br>
-         <br>
-           <label for="code">codeMeli:</label>
-        <input type="text" name="code" >
         <br>
         <br>
-        <pre style="font-size: 20px">Sex:</pre>
-        <select name="sex">
+        <label for="code">کد ملی:</label>
+        <input type="text" name="code">
+        <br>
+        <br>
+        <label style="font-size: 20px" for="gender">جنسیت:</label>
+        <select name="gender">
             <option value="Man">Man</option>
             <option value="Woman">Woman</option>
         </select>
-        <pre style="font-size: 20px">Father:</pre>
+        <br>
+        <br>
+        <label style="font-size: 20px">پدر:</label>
         <select name="father">
             <option value="null">null</option>
             {% for f in f_list %}
-                <option value="{{ f.id }}">{{ f.Name }} {{ f.Family }}  {{ f.Nathinalcode }}</option>
+                <option value="{{ f.id }}">{{ f.Name }} {{ f.Family }} {{ f.Nathinalcode }}</option>
             {% endfor %}>
         </select>
-        <pre style="font-size: 20px">Mother:</pre>
+        <br>
+        <br>
+        <label style="font-size: 20px">مادر:</label>
         <select name="mother">
-        <option value="null">null</option>
+            <option value="null">null</option>
             {% for m in m_list %}
-                <option value="{{ m.id }}">{{ m.Name }} {{ m.Family }}  {{ m.Nathinalcode }}</option>
+                <option value="{{ m.id }}">{{ m.Name }} {{ m.Family }} {{ m.Nathinalcode }}</option>
             {% endfor %}
         </select>
-      <pre style="font-size: 20px">Birthday:</pre>
+        <br>
+        <br>
+        <label style="font-size: 20px">تاریخ تولد:</label>
         <input type="date" name="birthday">
+        <input type="file" name="image">
         <button type="submit" id="button" style="border: 0px solid #FFFFFF">
             <img id="img" src="{% static 'jpg/button.png' %}" style="width: 200px">
         </button>
-    </form></div>
+    </form>
+</div>
 </body>
 </html>

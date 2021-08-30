@@ -5,8 +5,8 @@
     <meta name="description" content="Free Web tutorials">
     <meta name="keywords" content="HTML, CSS">
     <meta name="author" content="Danial Jamali">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, us">
+    <title>Index of FPI</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/index-style.css' %}">
     <script>
@@ -17,13 +17,13 @@
 
 </head>
 
-<body>
+<body dir="rtl">
 <div>
     <div id="list">
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="add/">Add</a></li>
-            <li><a href="edit/">Edit</a></li>
+            <li><a href="">خانه</a></li>
+            <li><a href="add/">افزودن فرد</a></li>
+            <li><a href="edit/">ویرایش افراد</a></li>
         </ul>
     </div>
 
@@ -34,18 +34,8 @@
 
 
         <div class="Per" onclick="click(window.location.assign('index/{{ i.id }}'))">
-
-            <div>
-                <div><a class="header">{{ i.Name }}</a></div>
-            </div>
-            <div>
-                <div class="div_info"><a>Father</a></div>
-                <div class="div_info"><a>Mother</a></div>
-            </div>
-            <div class="meli">
-                <div><a>00</a></div>
-            </div>
-
+            <div class="info" style="padding-top: 10px"><a>{{ i.Name }}</a></div>
+            <div class="meli"><a class="meli_a">{{ i.CodeNational }}</a></div>
         </div>
 
 
