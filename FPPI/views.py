@@ -27,7 +27,7 @@ def Sumbit(request):
     name = request.POST['name']
     family = request.POST['family']
     code = request.POST['code']
-    sex = request.POST['sex']
+    sex = request.POST['gender']
     birth = request.POST['birthday']
     father = request.POST['father']
 

@@ -17,7 +17,20 @@ li:hover{
     background-color: #f1f3ff;
 }
 
-li a {
+@media only screen and (max-width: 800px) and (min-width: 200px) {
+  li a {
+
+  display: block;
+  color: #000000;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+    font-family: Calibri, Arial, Dubai Medium;
+    font-size: 14px;
+}
+}
+@media only screen and (min-width: 900px) {
+  li a {
   display: block;
   color: #000000;
   text-align: center;
@@ -26,6 +39,8 @@ li a {
     font-family: Calibri, Arial, Dubai Medium;
     font-size: large;
 }
+}
+
 
 .meli:hover{
     background-color: #d6faff;

@@ -4,7 +4,7 @@ body{direction: rtl;font-family: Calibri}
 }
 
 label{
-    font-size: 20px;
+    font-size: 22px;
 }
 div{
     width: 70%;
@@ -17,6 +17,8 @@ div{
 
 input{
     width: 98%;
+    font-family: Calibri;
+    font-size: 21px;
 }
 select{
     width: 98%;

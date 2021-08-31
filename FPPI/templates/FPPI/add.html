@@ -25,14 +25,14 @@
         <br>
         <label style="font-size: 20px" for="gender">جنسیت:</label>
         <select name="gender">
-            <option value="Man">Man</option>
-            <option value="Woman">Woman</option>
+            <option value="Man">مرد</option>
+            <option value="Woman">زن</option>
         </select>
         <br>
         <br>
         <label style="font-size: 20px">پدر:</label>
         <select name="father">
-            <option value="null">null</option>
+            <option value="null">نامعلوم</option>
             {% for f in f_list %}
                 <option value="{{ f.id }}">{{ f.Name }} {{ f.Family }} {{ f.Nathinalcode }}</option>
             {% endfor %}>
@@ -41,7 +41,7 @@
         <br>
         <label style="font-size: 20px">مادر:</label>
         <select name="mother">
-            <option value="null">null</option>
+            <option value="null">نامعلوم</option>
             {% for m in m_list %}
                 <option value="{{ m.id }}">{{ m.Name }} {{ m.Family }} {{ m.Nathinalcode }}</option>
             {% endfor %}
