@@ -5,6 +5,7 @@
     <title>{{ person.Name }}</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/show-style.css' %}">
+    
 </head>
 <body>
 
@@ -14,9 +15,25 @@
         <hr>
         <br>
         <div>
-            <div class="parent">{{ mother.Name }}</div>
-            <div class="parent">{{ father.Name }}</div>
+            <div class="parent">مادر:	&nbsp; {{ mother.Name }} {{ mother.Family }}({{ mother.CodeNational }})</div>
+            <div class="parent">پدر:	&nbsp;{{ father.Name }} {{ father.Family }}({{ father.CodeNational }})</div>
         </div>
+        <hr>
+        <a id="code">کد ملی: {{ person.CodeNational }}</a>
+        <br>
+        <br>
+        <a id="code">تاریخ تولد: {{ person.Birth }}</a>
+        <br>
+        <br>
+
+        <button onclick='var x=document.getElementById("so")
+        if (x.display=="none"){
+            x.display="block"
+        }
+        if (x.display=="blck"){
+            x.display="none"
+        }'>اطلاعات بیشتر</button>
+        <p id="so">{{person.MoreInfo|linebreaks}}</p>
 
     </div>
 

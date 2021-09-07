@@ -9,8 +9,10 @@ class Person(models.Model):
     sex = models.CharField(max_length=10, null=1)
     CodeNational = models.CharField(max_length=100, null=1)
     Birth = models.CharField(null=1,max_length=100)
+    Adr = models.CharField(null=1, max_length=200)
     Father = models.ForeignKey("Father", models.CASCADE, null=1)
     Mother = models.ForeignKey("Mother", models.CASCADE, null=True)
+    MoreInfo = models.CharField(max_length=3000 ,null=1,)
 
 
 class Souse(models.Model):

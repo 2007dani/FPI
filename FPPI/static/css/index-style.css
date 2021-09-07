@@ -1,6 +1,8 @@
 body{
     background-color: #eae2e2;
-    padding-top: -2px;
+    margin-top:0px;
+    margin-left:0px;
+    margin-right:0px;
 }
 ul {
   list-style-type: none;
@@ -9,7 +11,6 @@ ul {
   overflow: hidden;
   background-color: #6b789d;
 }
-
 li {
   float: right;
 }
@@ -42,8 +43,8 @@ li:hover{
 }
 
 
-.meli:hover{
-    background-color: #d6faff;
+.info:hover{
+    background-color: #d6faff; !important;
 }.meli:hover{
     background-color: #d6faff;
 }

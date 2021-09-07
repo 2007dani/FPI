@@ -1,19 +1,63 @@
-body{direction: rtl;font-family: Calibri}
-.li{
-    float: left;
+body{
+    direction: rtl;
+    font-family: Calibri;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    overflow: hidden;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #6b789d;
+}
+li {
+  float: right;
+}
+li:hover{
+       background-color: #f1f3ff;
+}
+@media only screen and (max-width: 800px) and (min-width: 200px) {
+  li a {
+
+  display: block;
+  color: #000000;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+    font-family: Calibri, Arial, Dubai Medium;
+    font-size: 14px;
+}
+}
+@media only screen and (min-width: 900px) {
+  li a {
+  display: block;
+  color: #000000;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+    font-family: Calibri, Arial, Dubai Medium;
+    font-size: large;
+}
 }
 
 label{
-    font-size: 22px;
+    font-size: 24px;
 }
-div{
-    width: 70%;
-    height: 800px;
+pre{
+    font-size: 24px;
+}
+#d{
+    width: 99%;
+    height: 900px;
     background-color: #f1f3ff;
-    margin: 78px auto auto auto;
-    overflow: auto;
-
+    margin-right: auto;
+    margin-left: auto;
 }
+
 
 input{
     width: 98%;
@@ -22,8 +66,13 @@ input{
 }
 select{
     width: 98%;
-    font-size: 20px;
+    font-size: 24px;
 
+}
+textarea{
+    width: 98%;
+    resize: none;
+    font-size: 18px;
 }
 h1{
 
@@ -39,3 +88,4 @@ h1{
 #img:hover{
     background-color: #4192fd;
 }
+

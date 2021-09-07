@@ -30,6 +30,7 @@ def Sumbit(request):
     sex = request.POST['gender']
     birth = request.POST['birthday']
     father = request.POST['father']
+    moreinfo = request.POST["MoreInfo"]
 
     if father == 'null':
         father = None
@@ -42,7 +43,7 @@ def Sumbit(request):
         mother = int(father)
 
     x = models.Person(Name=name, Family=family, CodeNational=code, sex=sex, Father_id=father, Mother=mother,
-                      Birth=birth, )
+                      Birth=birth, MoreInfo=moreinfo)
 
     if sex == "Man":
         x.save()
@@ -78,14 +79,15 @@ def Sumbit(request):
 
 def Show(request, id):
     per = models.Person.objects.get(pk=id)
+    class null:
+        Name = "نامعلوم"
     try:
         mother = models.Mother.objects.get(pk=per.Mother_id)
+    except:
+        mother = null()
+    try:
         father = models.Father.objects.get(pk=per.Father_id)
     except:
-        class null:
-            Name = "نامعلوم"
-
-        mother = null()
         father = null()
 
     context = {

@@ -2,24 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+       <meta name="description" content="Add person to FPI">
+        <meta name="keywords" content="HTML, CSS">
+        <meta name="author" content="Danial Jamali">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, us">
     <title>Add</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/add.css' %}">
 </head>
 <body>
+<div id="l">
+    <ul>
+        <li><a href="">خانه</a></li>
+        <li><a href="add/">افزودن فرد</a></li>
+        <li><a href="edit/">ویرایش افراد</a></li>
+    </ul>
+</div>
 
-<div id="div">
+<br>
+
+<div id="d">
     <form method="post" action="{% url 'S' %}">
         {% csrf_token %}
         <label for="name">اسم:</label>
+        <br>
         <input type="text" name="name">
         <br>
         <br>
         <label for="family">نام خانوادگی:</label>
+        <br>
         <input type="text" name="family">
         <br>
         <br>
         <label for="code">کد ملی:</label>
+        <br>
         <input type="text" name="code">
         <br>
         <br>
@@ -30,7 +46,7 @@
         </select>
         <br>
         <br>
-        <label style="font-size: 20px">پدر:</label>
+        <label>پدر:</label>
         <select name="father">
             <option value="null">نامعلوم</option>
             {% for f in f_list %}
@@ -39,7 +55,7 @@
         </select>
         <br>
         <br>
-        <label style="font-size: 20px">مادر:</label>
+        <label>مادر:</label>
         <select name="mother">
             <option value="null">نامعلوم</option>
             {% for m in m_list %}
@@ -49,8 +65,17 @@
         <br>
         <br>
         <label style="font-size: 20px">تاریخ تولد:</label>
+        <br>
         <input type="date" name="birthday">
-        <input type="file" name="image">
+        <br>
+        <br>
+        <label>آدرس:</label>
+        <input type="text" name="Adr">
+        <br>
+        <br>
+        <label>توضیحات بیشتر:</label>
+        <textarea rows="8" name="MoreInfo"></textarea>
+
         <button type="submit" id="button" style="border: 0px solid #FFFFFF">
             <img id="img" src="{% static 'jpg/button.png' %}" style="width: 200px">
         </button>
