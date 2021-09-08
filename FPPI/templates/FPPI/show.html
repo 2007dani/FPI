@@ -5,6 +5,7 @@
     <title>{{ person.Name }}</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/show-style.css' %}">
+    <link href="{% static 'js/show.js' %}">
     
 </head>
 <body>
@@ -25,16 +26,18 @@
         <a id="code">تاریخ تولد: {{ person.Birth }}</a>
         <br>
         <br>
-
-        <button onclick='var x=document.getElementById("so")
-        if (x.display=="none"){
-            x.display="block"
-        }
-        if (x.display=="blck"){
-            x.display="none"
-        }'>اطلاعات بیشتر</button>
-        <p id="so">{{person.MoreInfo|linebreaks}}</p>
-
+        
+        <button onclick="show_more()">اطلاعات بیشتر</button>
+        <div id="info">
+        <p>{{person.MoreInfo|linebreaks}}</p>
+        </div>
+        <script>   
+            function show_more(){
+                var x = document.getElementById('info');
+                x.style.display="block"
+                x.style.fontSize="23px"
+            }
+        </script>
     </div>
 
 </body>

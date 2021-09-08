@@ -1,5 +1,6 @@
 body{
     direction: rtl;
+    overflow: hidden;
 }
 #mother_div{
     width: 98%;
@@ -27,9 +28,11 @@ body{
 }
 button{
     font-size: large;
-}
-p{
-    font-size: 22px;
-    font-family: Calibri;
  
+}
+#info{
+    width:100%;
+    font-size: 23ps;
+    font-family: Calibri;
+    display:none;
 }
