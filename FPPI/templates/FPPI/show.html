@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="edit">
+     <meta name="keywords" content="HTML, CSS">
+     <meta name="author" content="Danial Jamali">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, us">
     <title>{{ person.Name }}</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/show-style.css' %}">
-    <link href="{% static 'js/show.js' %}">
+    <script src="{% static 'js/show.js' %}"></script>
     
 </head>
 <body>
@@ -31,13 +35,6 @@
         <div id="info">
         <p>{{person.MoreInfo|linebreaks}}</p>
         </div>
-        <script>   
-            function show_more(){
-                var x = document.getElementById('info');
-                x.style.display="block"
-                x.style.fontSize="23px"
-            }
-        </script>
     </div>
 
 </body>

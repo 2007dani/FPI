@@ -22,5 +22,8 @@ urlpatterns = [
     path('',views.index),
     path('add/',views.add),
     path('add/sumbit',views.Sumbit,name="S"),
-    path('index/<int:id>',views.Show)
+    path('index/<int:id>',views.Show),
+    path('edit/',views.Edit),
+    path('edit/<int:id>',views.EditSelect),
+    path('Edit',views.Edit_Sumbit,name="E")
 ]

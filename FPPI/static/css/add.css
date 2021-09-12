@@ -4,7 +4,7 @@ body{
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 0px;
-    overflow: hidden;
+    overflow-x:hidden ;
 }
 
 ul {
@@ -31,6 +31,22 @@ li:hover{
     font-family: Calibri, Arial, Dubai Medium;
     font-size: 14px;
 }
+label{
+    font-size: large;
+}
+pre{
+    font-size: large;
+}
+input{
+    width: 98%;
+    font-family: Calibri;
+    font-size: 21px;
+}
+select{
+    width: 98%;
+    font-size:large;
+
+}
 }
 @media only screen and (min-width: 900px) {
   li a {
@@ -42,50 +58,44 @@ li:hover{
     font-family: Calibri, Arial, Dubai Medium;
     font-size: large;
 }
-}
-
 label{
-    font-size: 24px;
+    font-size: x-large;
 }
-pre{
-    font-size: 24px;
+input{
+    width: 98%;
+    font-family: Calibri;
+    font-size: x-large;
+}
+select{
+    width: 98%;
+    font-size:x-large;
+
+}
 }
 #d{
-    width: 99%;
-    height: 900px;
+    width: 93%;
+    height: 1000px;
     background-color: #f1f3ff;
     margin-right: auto;
     margin-left: auto;
 }
 
-
-input{
-    width: 98%;
-    font-family: Calibri;
-    font-size: 21px;
-}
-select{
-    width: 98%;
-    font-size: 24px;
-
-}
 textarea{
     width: 98%;
     resize: none;
     font-size: 18px;
 }
-h1{
-
-    text-align: center;
-
+button{
+    font-size: 33px;
+    padding: 10px 100px 10px 100px;
+    color: #ffffff;
+    background-color: #424242;
 }
-#button{
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    margin-top: 10px;
+#btn{
+   text-align: center;
 }
-#img:hover{
-    background-color: #4192fd;
+#more{
+    font-size: 22px;
+    font-family: Calibri;
 }
 

@@ -1,15 +1,14 @@
 body{
     direction: rtl;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 #mother_div{
     width: 98%;
     margin-right: auto;
     margin-left: auto;
     background-color: #dadada;
-    height: 500px;
+    height: fit-content;
     padding: 10px;
-
 }
 #name{
     font-size: 40px;
@@ -32,7 +31,6 @@ button{
 }
 #info{
     width:100%;
-    font-size: 23ps;
-    font-family: Calibri;
     display:none;
+    text-align: start;
 }

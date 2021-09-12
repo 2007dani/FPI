@@ -2,18 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Free Web tutorials">
+    <meta name="description" content="edit code">
     <meta name="keywords" content="HTML, CSS">
     <meta name="author" content="Danial Jamali">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, us">
     <title>Index of FPI</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/index-style.css' %}">
-    <script>
-        function click(id) {
-            window.location.assign("index" + "/" + id)
-        }
-    </script>
 
 </head>
 
@@ -22,7 +17,7 @@
     <div id="list">
         <ul>
             <li class="l"><a href="">خانه</a></li>
-            <li><a href="/add/" class="l">افزودن فرد</a></li>
+            <li><a href="add/" class="l">افزودن فرد</a></li>
             <li><a href="edit/" class="l">ویرایش افراد</a></li>
         </ul>
     </div>
@@ -33,10 +28,14 @@
 </div>
 <div>
     {% for i in Person %}
-        <div class="Per" onclick="click(window.location.assign('index/{{ i.id }}'))">
+
+
+        <div class="Per" onclick="click(window.location.assign('/edit/{{ i.id }}'))">
             <div class="info" style="padding-top: 10px"><a>{{ i.Name }}</a></div>
             <div class="meli"><a class="meli_a">{{ i.CodeNational }}</a></div>
         </div>
+
+
     {% endfor %}
 </div>
 

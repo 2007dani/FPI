@@ -1,10 +1,16 @@
 
 function show_more(){
-    alert("run!")
-    var x = document.getElementById("info")
-    if (x.style.display="none"){
+    var x=document.getElementById("info")
+    if (x.style.display==""){
         x.style.display="block"
+        x.style.fontSize="25px"
+        x.style.color="#121211"
+        x.style.fontFamily="Calibri"
+        x.style.backgroundColor="#e6ede6"
     }else{
-        x.style.display="none"
+        x.style.display=""
+        x.style.fontSize="25px"
+        x.style.color="#121211"
+        x.style.fontFamily="Calibri"   
     }
 }

@@ -22,37 +22,41 @@
 <br>
 
 <div id="d">
-    <form method="post" action="{% url 'S' %}">
+    <form method="post" action="{% url 'E' %}">
         {% csrf_token %}
+        <input type="hidden" value="{{Person.id}}" name="id">
         <label for="name">اسم:</label>
         <br>
-        <input type="text" name="name" >
+        <input type="text" name="name" value="{{Person.Name}}">
         <br>
         <br>
         <label for="family">نام خانوادگی:</label>
         <br>
-        <input type="text" name="family" >
+        <input type="text" name="family"  value="{{Person.Family}}">
         <br>
         <br>
         <label for="code">کد ملی:</label>
         <br>
-        <input type="text" name="code" >
+        <input type="text" name="code"  value="{{Person.CodeNational}}">
         <br>
         <br>
         <label for="gender">جنسیت:</label>
         <select name="gender" >
+            {% if Person.sex == "Man" %}
             <option value="Man">مرد</option>
             <option value="Woman">زن</option>
+            {%endif%}
+            {% if Person.sex == "Woman" %}
             <option value="Woman">زن</option>
             <option value="Man">مرد</option>
-            
+            {%endif%}
         </select>
         <br>
         <br>
         <label>پدر:</label>
         <br>
         <select name="father">
-            <option value="null">نامعلوم</option>
+            <option value="{{f.id}}">{{ f.Name }} {{ f.Family }} {{ f.Nathinalcode }}</option>
             {% for f in f_list %}
                 <option value="{{ f.id }}">{{ f.Name }} {{ f.Family }} {{ f.Nathinalcode }}</option>
             {% endfor %}>
@@ -61,7 +65,7 @@
         <br>
         <label>مادر:</label>
         <select name="mother">
-            <option value="null">نامعلوم</option>
+            <option value="{{m.id}}">{{ m.Name }} {{ m.Family }} {{ m.Nathinalcode }}</option>
             {% for m in m_list %}
                 <option value="{{ m.id }}">{{ m.Name }} {{ m.Family }} {{ m.Nathinalcode }}</option>
             {% endfor %}
@@ -70,20 +74,19 @@
         <br>
         <label>تاریخ تولد:</label>
         <br>
-        <input type="date" name="birthday">
+        <input value="{{Person.Birth}}" type="date" name="birthday">
         <br>
         <br>
         <label>آدرس:</label>
-        <input type="text" name="Adr">
+        <input value="{{Person.Adr}}" type="text" name="Adr">
         <br>
         <br>
         <label>توضیحات بیشتر:</label>
-        <textarea id=more rows="8" name="MoreInfo"></textarea>
-        <div id="btn">
+        <textarea id="more"  rows="8" name="MoreInfo">{{Person.MoreInfo}}</textarea>
+       
         <button type="submit" id="button" >
             ذخیره
         </button>
-        </span>
     </form>
 </div>
 </body>
