@@ -13,9 +13,9 @@
 <body>
 <div id="l">
     <ul>
-        <li><a href="">خانه</a></li>
-        <li><a href="add/">افزودن فرد</a></li>
-        <li><a href="edit/">ویرایش افراد</a></li>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/add/">افزودن فرد</a></li>
+        <li><a href="/edit/">ویرایش افراد</a></li>
     </ul>
 </div>
 
@@ -23,67 +23,67 @@
 
 <div id="d">
     <form method="post" action="{% url 'S' %}">
-        {% csrf_token %}
-        <label for="name">اسم:</label>
-        <br>
-        <input type="text" name="name" >
-        <br>
-        <br>
-        <label for="family">نام خانوادگی:</label>
-        <br>
-        <input type="text" name="family" >
-        <br>
-        <br>
-        <label for="code">کد ملی:</label>
-        <br>
-        <input type="text" name="code" >
-        <br>
-        <br>
-        <label for="gender">جنسیت:</label>
-        <select name="gender" >
-            <option value="Man">مرد</option>
-            <option value="Woman">زن</option>
-            <option value="Woman">زن</option>
-            <option value="Man">مرد</option>
-            
-        </select>
-        <br>
-        <br>
-        <label>پدر:</label>
-        <br>
-        <select name="father">
-            <option value="null">نامعلوم</option>
-            {% for f in f_list %}
-                <option value="{{ f.id }}">{{ f.Name }} {{ f.Family }} {{ f.Nathinalcode }}</option>
-            {% endfor %}>
-        </select>
-        <br>
-        <br>
-        <label>مادر:</label>
-        <select name="mother">
-            <option value="null">نامعلوم</option>
-            {% for m in m_list %}
-                <option value="{{ m.id }}">{{ m.Name }} {{ m.Family }} {{ m.Nathinalcode }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <br>
-        <label>تاریخ تولد:</label>
-        <br>
-        <input type="date" name="birthday">
-        <br>
-        <br>
-        <label>آدرس:</label>
-        <input type="text" name="Adr">
-        <br>
-        <br>
-        <label>توضیحات بیشتر:</label>
-        <textarea id=more rows="8" name="MoreInfo"></textarea>
-        <div id="btn">
-        <button type="submit" id="button" >
-            ذخیره
-        </button>
-        </span>
+        <div>
+            {% csrf_token %}
+            <label for="name">اسم:</label>
+            <br>
+            <input type="text" name="name" >
+            <br>
+            <br>
+            <label for="family">نام خانوادگی:</label>
+            <br>
+            <input type="text" name="family" >
+            <br>
+            <br>
+            <label for="code">کد ملی:</label>
+            <br>
+            <input type="text" name="code" >
+            <br>
+            <br>
+            <label for="gender">جنسیت:</label>
+            <select name="gender" >
+                <option value="Man">مرد</option>
+                <option value="Woman">زن</option>            
+            </select>
+            <br>
+            <br>
+            <label>پدر:</label>
+            <br>
+            <select name="father">
+                <option value="null">نامعلوم</option>
+                {% for f in f_list %}
+                    <option value="{{ f.id }}">{{ f.Name }} {{ f.Family }} {{ f.Nathinalcode }}</option>
+                {% endfor %}>
+            </select>
+            <br>
+            <br>
+            <label>مادر:</label>
+            <select name="mother">
+                <option value="null">نامعلوم</option>
+                {% for m in m_list %}
+                    <option value="{{ m.id }}">{{ m.Name }} {{ m.Family }} {{ m.Nathinalcode }}</option>
+                {% endfor %}
+            </select>
+
+            <br>
+            <br>
+            <label>تاریخ تولد:</label>
+            <br>
+            <input type="date" name="birthday">
+            <br>
+            <br>
+            <label>آدرس:</label>
+            <input type="text" name="Adr">
+            <br>
+            <br>
+            <label>توضیحات بیشتر:</label>
+            <textarea id=more rows="8" name="MoreInfo"></textarea>
+            <div id="btn">
+            <button type="submit" id="button" >
+                ذخیره
+            </button>
+           
+        </div>
     </form>
 </div>
 </body>

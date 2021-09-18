@@ -21,9 +21,9 @@
 <div>
     <div id="list">
         <ul>
-            <li class="l"><a href="">خانه</a></li>
+            <li><a href="/">خانه</a></li>
             <li><a href="/add/" class="l">افزودن فرد</a></li>
-            <li><a href="edit/" class="l">ویرایش افراد</a></li>
+            <li><a href="/edit/" class="l">ویرایش افراد</a></li>
         </ul>
     </div>
     <br>
@@ -33,7 +33,7 @@
 </div>
 <div>
     {% for i in Person %}
-        <div class="Per" onclick="click(window.location.assign('index/{{ i.id }}'))">
+        <div class="Per" onclick="click(window.location.assign('index/show/{{ i.id }}'))">
             <div class="info" style="padding-top: 10px"><a>{{ i.Name }}</a></div>
             <div class="meli"><a class="meli_a">{{ i.CodeNational }}</a></div>
         </div>

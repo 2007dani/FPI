@@ -5,7 +5,7 @@
     <meta name="description" content="edit">
      <meta name="keywords" content="HTML, CSS">
      <meta name="author" content="Danial Jamali">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, us">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0,">
     <title>{{ person.Name }}</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/show-style.css' %}">
@@ -13,7 +13,6 @@
     
 </head>
 <body>
-
     <div id="mother_div">
 
         <a id="name"> {{ person.Name }} {{ person.Family }}</a>
@@ -21,20 +20,32 @@
         <br>
         <div>
             <div class="parent">مادر:	&nbsp; {{ mother.Name }} {{ mother.Family }}({{ mother.CodeNational }})</div>
+            <br>
             <div class="parent">پدر:	&nbsp;{{ father.Name }} {{ father.Family }}({{ father.CodeNational }})</div>
         </div>
         <hr>
         <a id="code">کد ملی: {{ person.CodeNational }}</a>
         <br>
-        <br>
+        <hr>
+        
         <a id="code">تاریخ تولد: {{ person.Birth }}</a>
         <br>
+        <hr>
+        <p id=adr>آدرس:{{person.Adr}}</p>
         <br>
+        <hr>
+        <form method="POST" action="{% url 'D' %}" id="form-delete">
+            {% csrf_token %}
+            <button id="delete">حذف</button>
+            <input type="hidden" value="{{person.id}}" name="id">
+        </form>
+        <br>
+        <button id="more" onclick="show_more()">اطلاعات بیشتر</button>
         
-        <button onclick="show_more()">اطلاعات بیشتر</button>
-        <div id="info">
+    </div>
+    <div id="info">
+        <h4 >اطلاعات بیشتر</h3>
         <p>{{person.MoreInfo|linebreaks}}</p>
-        </div>
     </div>
 
 </body>

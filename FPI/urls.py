@@ -21,9 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
     path('add/',views.add),
-    path('add/sumbit',views.Sumbit,name="S"),
-    path('index/<int:id>',views.Show),
     path('edit/',views.Edit),
-    path('edit/<int:id>',views.EditSelect),
-    path('Edit',views.Edit_Sumbit,name="E")
+    path('index/show/<int:id>/',views.Show),
+    path('index/edit/<int:id>/',views.EditSelect),
+    path('sumbit/add/',views.Sumbit ,name="S"),
+    path('sumbit/edit/',views.Edit_Sumbit ,name="E"),
+    path('delete',views.Delete , name="D")
 ]

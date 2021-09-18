@@ -19,6 +19,7 @@ def add(request):
     context = {
         "f_list": models.Father.objects.all(),
         "m_list": models.Mother.objects.all(),
+        "s_list": models.Souse.objects.all(),
     
     }
     return render(request, "FPPI/add.html", context=context)
@@ -46,10 +47,26 @@ def Sumbit(request):
     else:
         mother = int(mother)
 
+
     x = models.Person(Name=name, Family=family, CodeNational=code, sex=sex, Father_id=father, Mother=mother,
                       Birth=birth, MoreInfo=moreinfo,Adr=adr)
+    x.save()
+  
+    if not father==None:
+        f=models.Father.objects.get(pk=father)
+        for c in f.person_set.all():
+            z=c.id
+            z=models.Sister()
+            if c.sex=="Man":
+                z=c.id
+                z=models.Brother.objects.get(pk=z)
+                x.Brother.add(z)
+            if c.sex=="Woman":
+                x.Sister.add(c)
+                z=c.id
+                z=models.Sister.objects.get(pk=z)
+                x.Brother.add(z)
     if sex == "Man":
-        x.save()
         y = models.Father(Name=name, Family=family, CodeNational=code, Birth=birth, person_id=x.id)
         y.save()
 
@@ -142,39 +159,31 @@ def Edit_Sumbit(request):
     x.Family=family
     x.Birth=birth
     x.CodeNational=code
-    x.Father=father
-    x.Mother=mother
+    if not father==None:
+        x.Father=models.Father.objects.get(pk=father)
+    if not mother==None:
+        x.Mother=models.Father.objects.get(pk=mother)
     x.MoreInfo=moreinfo
     x.Adr=adr
     x.save()
 
-    if sex == "Man":
-        x.save()
-        y = models.Father(Name=name, Family=family, CodeNational=code, Birth=birth, person_id=x.id)
-        y.save()
-
-        z = models.Brother(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        z.save()
-
-        a = models.Son(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        a.save()
-
-        b = models.Souse(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        b.save()
-
-    if sex == "Woman":
-        x = models.Person(Name=name, Family=family, CodeNational=code, sex=sex, Father=father, Mother=mother,
-                          Birth=birth, MoreInfo=moreinfo)
-        x.save()
-        y = models.Mother(Name=name, Family=family, CodeNational=code, Birth=birth, person_id=x.id)
-        y.save()
-        z = models.Sister(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        z.save()
-        a = models.Dather(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        a.save()
-        b = models.Souse(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        b.save()
-
         ####################################################################################
 
     return redirect('/')
+def Delete(request):
+    pk=int(request.POST["id"])
+
+    if models.Person.objects.get(pk=pk).sex=="Man":
+        models.Person.objects.get(pk=pk).delete()
+        models.Son.objects.get(pk=pk).delete()
+        models.Souse.objects.get(pk=pk).delete()
+        models.Father.objects.get(pk=pk).delete()
+        models.Brother.objects.get(pk=pk).delete()
+    else:
+        models.Person.objects.get(pk=pk).delete()
+        models.Mother.objects.get(pk=pk).delete()
+        models.Sister.objects.get(pk=pk).delete()
+        models.Dather.objects.get(pk=pk).delete()
+        models.Souse.objects.get(pk=pk).delete()
+
+    return redirect("/")

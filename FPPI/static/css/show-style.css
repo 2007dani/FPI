@@ -1,6 +1,7 @@
 body{
     direction: rtl;
     overflow-x: hidden;
+    font-family: Calibri;
 }
 #mother_div{
     width: 98%;
@@ -14,12 +15,23 @@ body{
     font-size: 40px;
     color: black;
 }
-.parent{
-    width: 50%;
-    float: right;
-    height: 100px;
-    font-size: 25px;
+@media only screen and (min-width:900px) {
+    .parent{
+        width: 50%;
+        float: right;
+        height: 100px;
+        font-size: 25px;
+        
+    }
 }
+@media only screen and (min-width:200px) and (max-width:900px) {
+    .parent{
+
+        font-size: 30px;
+        
+    }
+}
+
 #code{
     margin-top: 0px;
     font-size: 25px;
@@ -33,4 +45,16 @@ button{
     width:100%;
     display:none;
     text-align: start;
+    font-size: 23px;
+    background-color: #dadada;
+    
+}
+#adr{
+    font-size: 24px;
+
+}
+#delete{
+    padding: 3px;
+    background-color: rgb(245, 19, 19);
+    color: #dadada;
 }
