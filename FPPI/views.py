@@ -6,6 +6,7 @@ from django.http import HttpResponse
 # Create your views here.
 from FPPI import models
 import os
+import jDate
 
 
 def index(request):
@@ -37,6 +38,10 @@ def Sumbit(request):
 
     if birth=="YYYY-MM-DD":
         birth="نامعلوم"
+    else:
+        a = birth.split("-")
+        b, c, d = a
+        birth = jDate.miladi2shamci(b,c,d)
     if father == 'null':
         father = None
     else:
