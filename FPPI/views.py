@@ -6,9 +6,6 @@ from django.http import HttpResponse
 # Create your views here.
 from FPPI import models
 import os
-import jDate
-
-
 def index(request):
     context = {
         "Person": models.Person.objects.all()

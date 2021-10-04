@@ -9,11 +9,7 @@
     <title>Index of FPI</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/index-style.css' %}">
-    <script>
-        function click(id) {
-            window.location.assign("index" + "/" + id)
-        }
-    </script>
+    <script src="{% static 'js/index.js' %}"></script>
 
 </head>
 
@@ -31,11 +27,16 @@
 
 
 </div>
+
+<div id="search">
+    <input type="text" id="input" oninput="search()">
+</div>
+
 <div>
     {% for i in Person %}
-        <div class="Per" onclick="click(window.location.assign('index/show/{{ i.id }}'))">
-            <div class="info" style="padding-top: 10px"><a>{{ i.Name }}</a></div>
-            <div class="meli"><a class="meli_a">{{ i.CodeNational }}</a></div>
+    <div id="{{forloop.counter}}" value="{{ i.Name }} {{i.Family}}" class="Per" onclick="click_('{{i.id}}')">
+            <div  class="info" style="padding-top: 10px"><a>{{ i.Name }} {{i.Family}}</a></div>
+            <div class="meli"><a class="meli_a" >{{ i.CodeNational }}</a></div>
         </div>
     {% endfor %}
 </div>
