@@ -1,11 +1,8 @@
 from django.shortcuts import redirect, render
-import playsound
-from gtts import gTTS, gTTSError
 import os
 from django.http import HttpResponse
 # Create your views here.
 from FPPI import models
-import os
 def index(request):
     context = {
         "Person": models.Person.objects.all()
@@ -35,10 +32,8 @@ def Sumbit(request):
 
     if birth=="YYYY-MM-DD":
         birth="نامعلوم"
-    else:
-        a = birth.split("-")
-        b, c, d = a
-        birth = jDate.miladi2shamci(b,c,d)
+    else:  
+        birth = birth
     if father == 'null':
         father = None
     else:
