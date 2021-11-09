@@ -22,9 +22,10 @@
 <br>
 
 <div id="d">
-    <form method="post" action="{% url 'S' %}">
+    <form method="post" action="{% url 'S' %}" >
         <div>
             {% csrf_token %}
+            {{ form }}
             <label for="name">اسم:</label>
             <br>
             <input type="text" name="name" >
@@ -47,33 +48,31 @@
             </select>
             <br>
             <br>
-            <label>پدر:</label>
-            <br>
-            <select name="father">
-                <option value="null">نامعلوم</option>
-                {% for f in f_list %}
-                    <option value="{{ f.id }}">{{ f.Name }} {{ f.Family }} {{ f.Nathinalcode }}</option>
-                {% endfor %}>
-            </select>
-            <br>
-            <br>
-            <label>مادر:</label>
-            <select name="mother">
-                <option value="null">نامعلوم</option>
-                {% for m in m_list %}
-                    <option value="{{ m.id }}">{{ m.Name }} {{ m.Family }} {{ m.Nathinalcode }}</option>
-                {% endfor %}
-            </select>
-
-            <br>
             <br>
             <label>تاریخ تولد:</label>
             <br>
-            <input type="date" name="birthday">
             <br>
-            <br>
-            <label>آدرس:</label>
-            <input type="text" name="Adr">
+
+            <select class="birth" name="day">
+                <option>DD</option>
+                {% for i in dayList %}
+                    <option>{{ i }}</option>
+                {% endfor %}
+            </select>
+
+            <select class="birth" name="month">
+                <option>MM</option>
+                {% for i in monthList %}
+                    <option>{{ i }}</option>
+                {% endfor %}
+            </select>
+
+            <select class="birth" name="year">
+                <option>YYYY</option>
+                {% for i in yearList %}
+                    <option>{{ i }}</option>
+                {% endfor %}
+            </select>
             <br>
             <br>
             <label>توضیحات بیشتر:</label>

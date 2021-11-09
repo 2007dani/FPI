@@ -31,9 +31,7 @@
         <a id="code">تاریخ تولد: {{ person.Birth }}</a>
         <br>
         <hr>
-        <p id=adr>آدرس:{{person.Adr}}</p>
         <br>
-        <hr>
         <form method="POST" action="{% url 'D' %}" id="form-delete">
             {% csrf_token %}
             <button id="delete">حذف</button>

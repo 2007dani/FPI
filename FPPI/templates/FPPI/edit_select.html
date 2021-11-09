@@ -53,40 +53,42 @@
         </select>
         <br>
         <br>
-        <label>پدر:</label>
-        <br>
-        <select name="father">
-            <option value="{{f.id}}">{{ f.Name }} {{ f.Family }} {{ f.Nathinalcode }}</option>
-            {% for f in f_list %}
-                <option value="{{ f.id }}">{{ f.Name }} {{ f.Family }} {{ f.Nathinalcode }}</option>
-            {% endfor %}>
-        </select>
-        <br>
-        <br>
-        <label>مادر:</label>
-        <select name="mother">
-            <option value="{{m.id}}">{{ m.Name }} {{ m.Family }} {{ m.Nathinalcode }}</option>
-            {% for m in m_list %}
-                <option value="{{ m.id }}">{{ m.Name }} {{ m.Family }} {{ m.Nathinalcode }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <br>
         <label>تاریخ تولد:</label>
         <br>
-        <input value="{{Person.Birth}}" type="date" name="birthday">
-        <br>
-        <br>
-        <label>آدرس:</label>
-        <input value="{{Person.Adr}}" type="text" name="Adr">
+        <select class="birth" name="day">
+            <option>{{ day }}</option>
+            <option>DD</option>
+            {% for i in dayList %}
+                <option>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <select class="birth" name="month">
+            <option>{{ month }}</option>
+            <option>MM</option>
+            {% for i in monthList %}
+                <option>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <select class="birth" name="year">
+            <option>{{ year }}</option>
+            <option>YYYY</option>
+            {% for i in yearList %}
+                <option>{{ i }}</option>
+            {% endfor %}
+        </select>
         <br>
         <br>
         <label>توضیحات بیشتر:</label>
         <textarea id="more"  rows="8" name="MoreInfo">{{Person.MoreInfo}}</textarea>
        
-        <button type="submit" id="button" >
-            ذخیره
-        </button>
+        <div id="btn">
+            <button type="submit" id="button" >
+                ذخیره
+            </button>
+           
+        </div>
     </form>
 </div>
 </body>

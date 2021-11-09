@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <form action="">
+            <label>پدر:</label>
+                <br>
+                <select name="father">
+                    <option value="null">نامعلوم</option>
+                    {% for f in f_list %}
+                        <option value="{{ f.id }}">{{ f.Name }} {{ f.Family }} {{ f.Nathinalcode }}</option>
+                    {% endfor %}>
+                </select>
+                <br>
+                <br>
+                <label>مادر:</label>
+                <select name="mother">
+                    <option value="null">نامعلوم</option>
+                    {% for m in m_list %}
+                        <option value="{{ m.id }}">{{ m.Name }} {{ m.Family }} {{ m.Nathinalcode }}</option>
+                    {% endfor %}
+                </select>
+        </form>
+    </body>
+</html>

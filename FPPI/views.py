@@ -1,20 +1,27 @@
 from django.shortcuts import redirect, render
 import os
 from django.http import HttpResponse
+
 # Create your views here.
 from FPPI import models
 def index(request):
     context = {
         "Person": models.Person.objects.all()
     }
+    import FPPI.Emma
+    FPPI.Emma.Emma().CreateWordFile()
     return render(request, "FPPI/index.html", context=context)
 
 
 def add(request):
+    from .form import GeeksModel
     context = {
         "f_list": models.Father.objects.all(),
         "m_list": models.Mother.objects.all(),
         "s_list": models.Souse.objects.all(),
+        "dayList":range(1,32),
+        "monthList":range(1,13),        
+        "yearList":range(1300,1410),
     
     }
     return render(request, "FPPI/add.html", context=context)
@@ -25,44 +32,20 @@ def Sumbit(request):
     family = request.POST['family']
     code = request.POST['code']
     sex = request.POST['gender']
-    birth = request.POST['birthday']
-    father = request.POST['father']
+    birth = request.POST['year'] +"/" + request.POST['month'] +  "/" + request.POST['day']
     moreinfo = request.POST["MoreInfo"]
-    adr=request.POST["Adr"]
 
-    if birth=="YYYY-MM-DD":
+    if birth=="YYYY/MM/DD":
         birth="نامعلوم"
     else:  
         birth = birth
-    if father == 'null':
-        father = None
-    else:
-        father = int(father)
-    mother = request.POST['mother']
-    if mother == 'null':
-        mother = None
-    else:
-        mother = int(mother)
 
 
-    x = models.Person(Name=name, Family=family, CodeNational=code, sex=sex, Father_id=father, Mother=mother,
-                      Birth=birth, MoreInfo=moreinfo,Adr=adr)
+    x = models.Person(Name=name, Family=family, CodeNational=code, sex=sex,
+                      Birth=birth, MoreInfo=moreinfo)
     x.save()
   
-    if not father==None:
-        f=models.Father.objects.get(pk=father)
-        for c in f.person_set.all():
-            z=c.id
-            z=models.Sister()
-            if c.sex=="Man":
-                z=c.id
-                z=models.Brother.objects.get(pk=z)
-                x.Brother.add(z)
-            if c.sex=="Woman":
-                x.Sister.add(c)
-                z=c.id
-                z=models.Sister.objects.get(pk=z)
-                x.Brother.add(z)
+
     if sex == "Man":
         y = models.Father(Name=name, Family=family, CodeNational=code, Birth=birth, person_id=x.id)
         y.save()
@@ -77,9 +60,6 @@ def Sumbit(request):
         b.save()
 
     if sex == "Woman":
-        x = models.Person(Name=name, Family=family, CodeNational=code, sex=sex, Father=father, Mother=mother,
-                          Birth=birth, MoreInfo=moreinfo)
-        x.save()
         y = models.Mother(Name=name, Family=family, CodeNational=code, Birth=birth, person_id=x.id)
         y.save()
         z = models.Sister(Name=name, Family=family, CodeNational=code, Birth=birth, )
@@ -125,7 +105,14 @@ def EditSelect(request,id):
         "f_list": models.Father.objects.all(),
         "m_list": models.Mother.objects.all(),
         "f": x.Father,
-        "m":x.Mother
+        "m":x.Mother,
+        "year":x.Birth.split("/")[0],
+        "month":x.Birth.split("/")[1],
+        "day":x.Birth.split("/")[2],
+
+        "dayList":range(1,32),
+        "monthList":range(1,13),        
+        "yearList":range(1300,1410),
     }
 
     return render(request, "FPPI/edit_select.html", context=context)
@@ -134,37 +121,20 @@ def Edit_Sumbit(request):
     family = request.POST['family']
     code = request.POST['code']
     sex = request.POST['gender']
-    birth = request.POST['birthday']
-    father = request.POST['father']
+    birth = request.POST['year'] +"/" + request.POST['month'] +  "/" + request.POST['day']
     moreinfo = request.POST["MoreInfo"]
-    adr=request.POST["Adr"]
     pk = request.POST['id']
 
-    if birth=="YYYY-MM-DD":
+    if birth=="YYYY/MM/DD":
         birth="نامعلوم"
-    if father == '':
-        father = None
-    else:
-        father = int(father)
-    mother = request.POST['mother']
-    if mother == '':
-        mother = None
-    else:
-        mother = int(mother)
     x=models.Person.objects.get(pk=int(pk))
     x.Name=name
     x.Family=family
     x.Birth=birth
     x.CodeNational=code
-    if not father==None:
-        x.Father=models.Father.objects.get(pk=father)
-    if not mother==None:
-        x.Mother=models.Father.objects.get(pk=mother)
-    x.MoreInfo=moreinfo
-    x.Adr=adr
     x.save()
 
-        ####################################################################################
+    ##########################################################################################
 
     return redirect('/')
 def Delete(request):

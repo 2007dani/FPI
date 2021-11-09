@@ -67,10 +67,18 @@ input{
     font-size: x-large;
 }
 select{
-    width: 98%;
+    width: 98.5%;
     font-size:x-large;
-
 }
+.birth{
+    width: 32% !important;
+    font-family: Calibri;
+    font-size: large;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+
 }
 #d{
     width: 93%;
@@ -93,6 +101,8 @@ button{
 }
 #btn{
    text-align: center;
+   margin-left: auto;
+   margin-right: auto;
 }
 #more{
     font-size: 22px;
