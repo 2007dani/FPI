@@ -14,15 +14,20 @@
 <div id="l">
     <ul>
         <li><a href="/">خانه</a></li>
-        <li><a href="add/">افزودن فرد</a></li>
-        <li><a href="edit/">ویرایش افراد</a></li>
+        <li><a href="/add/">افزودن فرد</a></li>
+        <li id="ShowingPage"><a href="edit/">ویرایش افراد</a></li>
     </ul>
 </div>
 
 <br>
 
 <div id="d">
-    <form method="post" action="{% url 'E' %}">
+    <div id="div_profile"> 
+        {% if Person.upload %} 
+        <img id="Profile" src="{{ Person.upload.url }}"></img>
+        {% endif %}
+    </div>
+    <form method="post" action="{% url 'E' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" value="{{Person.id}}" name="id">
         <label for="name">اسم:</label>
@@ -30,9 +35,13 @@
         <input type="text" name="name" value="{{Person.Name}}">
         <br>
         <br>
+        <label for="upload">تغیر عکس:</label>
+        <br>
+        <input  id="upload" type="file" name="upload">
+        <br><br>
         <label for="family">نام خانوادگی:</label>
         <br>
-        <input type="text" name="family"  value="{{Person.Family}}">
+        <input type="text" name="family"  value="{{ Person.Family }}">
         <br>
         <br>
         <label for="code">کد ملی:</label>

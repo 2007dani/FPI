@@ -27,12 +27,12 @@ li:hover{
   padding: 12px;
   text-decoration: none;
     font-family: Calibri, Arial, Dubai Medium;
-    font-size: 14px;
+    font-size: 20px;
 }
 }
 @media only screen and (min-width: 900px) {
   li a {
-      
+
   display: block;
   color: #000000;
   text-align: center;
@@ -45,7 +45,7 @@ li:hover{
 
 
 .info:hover{
-    background-color: #d6faff !important ; 
+    background-color: #d6faff !important ;
 }
 .meli:hover{
     background-color: #d6faff;
@@ -62,7 +62,7 @@ li:hover{
     transition: background-color 1s, width 0.5s;
     border-radius: 10px;
     padding: 10pz;
-    
+
 }
 
 .info{
@@ -70,9 +70,9 @@ li:hover{
     height: 70px;
     background-color: #f3fdff;
     text-align: center;
-    font-size: xx-large;    
+    font-size: xx-large;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto
 
 }
 div {
@@ -112,4 +112,15 @@ div {
     border: none; /* <-- This thing here */
     border:solid 1px #ccc;
     border-radius: 10px;
+}
+.Na{
+    width:100%;
+    height:60px;
+    overflow-y:hidden;
+    overflow-x :scroll;
+        white-space:nowrap;
+
+}
+#ShowingPage{
+    background:#ffffff;
 }

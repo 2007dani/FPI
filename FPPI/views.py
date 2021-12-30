@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 import os
 from django.http import HttpResponse
+from .form import PersonForms
 
 # Create your views here.
 from FPPI import models
@@ -8,13 +9,10 @@ def index(request):
     context = {
         "Person": models.Person.objects.all()
     }
-    import FPPI.Emma
-    FPPI.Emma.Emma().CreateWordFile()
     return render(request, "FPPI/index.html", context=context)
 
 
 def add(request):
-    from .form import GeeksModel
     context = {
         "f_list": models.Father.objects.all(),
         "m_list": models.Mother.objects.all(),
@@ -22,7 +20,7 @@ def add(request):
         "dayList":range(1,32),
         "monthList":range(1,13),        
         "yearList":range(1300,1410),
-    
+        "form" : PersonForms(),  
     }
     return render(request, "FPPI/add.html", context=context)
 
@@ -34,45 +32,19 @@ def Sumbit(request):
     sex = request.POST['gender']
     birth = request.POST['year'] +"/" + request.POST['month'] +  "/" + request.POST['day']
     moreinfo = request.POST["MoreInfo"]
-
-    if birth=="YYYY/MM/DD":
-        birth="نامعلوم"
-    else:  
-        birth = birth
-
-
+    if code == "":
+        code="نامعلوم"
     x = models.Person(Name=name, Family=family, CodeNational=code, sex=sex,
                       Birth=birth, MoreInfo=moreinfo)
     x.save()
-  
-
-    if sex == "Man":
-        y = models.Father(Name=name, Family=family, CodeNational=code, Birth=birth, person_id=x.id)
-        y.save()
-
-        z = models.Brother(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        z.save()
-
-        a = models.Son(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        a.save()
-
-        b = models.Souse(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        b.save()
-
-    if sex == "Woman":
-        y = models.Mother(Name=name, Family=family, CodeNational=code, Birth=birth, person_id=x.id)
-        y.save()
-        z = models.Sister(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        z.save()
-        a = models.Dather(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        a.save()
-        b = models.Souse(Name=name, Family=family, CodeNational=code, Birth=birth, )
-        b.save()
+    if request.method == 'POST':
+        try:
+            form = PersonForms(instance=x,files=request.FILES)
+            form.save()
+        except:
+            pass
 
         ####################################################################################
-
-    return redirect('/')
-
 
 def Show(request, id):
     per = models.Person.objects.get(pk=id)
@@ -125,14 +97,25 @@ def Edit_Sumbit(request):
     moreinfo = request.POST["MoreInfo"]
     pk = request.POST['id']
 
-    if birth=="YYYY/MM/DD":
-        birth="نامعلوم"
+    if code=="":
+        code="نامعلوم"
     x=models.Person.objects.get(pk=int(pk))
     x.Name=name
     x.Family=family
     x.Birth=birth
     x.CodeNational=code
     x.save()
+    x=models.Person.objects.get(pk=int(pk))
+    try:
+        os.remove("."+x.upload.url)
+    except:
+        pass
+    try:
+        if request.method == 'POST':
+            form = PersonForms(request.POST,request.FILES ,instance=x)
+            form.save()
+    except:
+        pass
 
     ##########################################################################################
 
@@ -140,17 +123,7 @@ def Edit_Sumbit(request):
 def Delete(request):
     pk=int(request.POST["id"])
 
-    if models.Person.objects.get(pk=pk).sex=="Man":
-        models.Person.objects.get(pk=pk).delete()
-        models.Son.objects.get(pk=pk).delete()
-        models.Souse.objects.get(pk=pk).delete()
-        models.Father.objects.get(pk=pk).delete()
-        models.Brother.objects.get(pk=pk).delete()
-    else:
-        models.Person.objects.get(pk=pk).delete()
-        models.Mother.objects.get(pk=pk).delete()
-        models.Sister.objects.get(pk=pk).delete()
-        models.Dather.objects.get(pk=pk).delete()
-        models.Souse.objects.get(pk=pk).delete()
+    models.Person.objects.get(pk=pk).delete()
+
 
     return redirect("/")

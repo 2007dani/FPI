@@ -14,7 +14,7 @@
 <div id="l">
     <ul>
         <li><a href="/">خانه</a></li>
-        <li><a href="/add/">افزودن فرد</a></li>
+        <li id="Showing"><a href="/add/">افزودن فرد</a></li>
         <li><a href="/edit/">ویرایش افراد</a></li>
     </ul>
 </div>
@@ -22,15 +22,18 @@
 <br>
 
 <div id="d">
-    <form method="post" action="{% url 'S' %}" >
+    <form method="post" action="{% url 'S' %}" enctype="multipart/form-data" >
         <div>
             {% csrf_token %}
-            {{ form }}
             <label for="name">اسم:</label>
             <br>
             <input type="text" name="name" >
             <br>
             <br>
+            <label for="upload">عکس:</label>
+            <br>
+            <input id="upload" type="file" name="upload">
+            <br><br> 
             <label for="family">نام خانوادگی:</label>
             <br>
             <input type="text" name="family" >
@@ -52,7 +55,6 @@
             <label>تاریخ تولد:</label>
             <br>
             <br>
-
             <select class="birth" name="day">
                 <option>DD</option>
                 {% for i in dayList %}

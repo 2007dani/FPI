@@ -13,11 +13,21 @@
     
 </head>
 <body>
+    
     <div id="mother_div">
 
         <a id="name"> {{ person.Name }} {{ person.Family }}</a>
+        <br>
         <hr>
         <br>
+        <div id="Profile">
+            {% if person.upload %}
+            <img id="ProfileImage" src="{{ person.upload.url }}"></img>
+            {% endif %}
+        <br>
+        <hr>
+        <br>
+        </div>
         <div>
             <div class="parent">مادر:	&nbsp; {{ mother.Name }} {{ mother.Family }}({{ mother.CodeNational }})</div>
             <br>
@@ -27,7 +37,6 @@
         <a id="code">کد ملی: {{ person.CodeNational }}</a>
         <br>
         <hr>
-        
         <a id="code">تاریخ تولد: {{ person.Birth }}</a>
         <br>
         <hr>

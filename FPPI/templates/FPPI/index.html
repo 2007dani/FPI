@@ -13,11 +13,10 @@
 
 </head>
 
-<body >
-<div>
+
     <div id="list">
         <ul>
-            <li><a href="/">خانه</a></li>
+            <li id="ShowingPage"><a href="/">خانه</a></li>
             <li><a href="/add/" class="l">افزودن فرد</a></li>
             <li><a href="/edit/" class="l">ویرایش افراد</a></li>
         </ul>
@@ -26,17 +25,20 @@
 
 
 
-</div>
+</div background="{% static 'jpg/a.png' %}">
 
 <div id="search">
     <input type="text" id="input" oninput="search()">
 </div>
 
 <div>
+    <body>
+    
+    <div>
     {% for i in Person %}
     <div id="{{forloop.counter}}" value="{{ i.Name }} {{i.Family}}" class="Per" onclick="click_('{{i.id}}')">
-            <div  class="info" style="padding-top: 10px"><a>{{ i.Name }} {{i.Family}}</a></div>
-            <div class="meli"><a class="meli_a" >{{ i.CodeNational }}</a></div>
+        <div  class="info" style="padding-top: 10px"><div class ="Na" ><a>{{ i.Name }} {{i.Family}}</a></div></div>
+        <div class="meli"><a class="meli_a" >{{ i.CodeNational }}</a></div>
         </div>
     {% endfor %}
 </div>

@@ -18,7 +18,7 @@
         <ul>
             <li><a href="/">خانه</a></li>
             <li><a href="/add/" class="l">افزودن فرد</a></li>
-            <li><a href="/edit/" class="l">ویرایش افراد</a></li>
+            <li id="ShowingPage"><a href="/edit/" class="l">ویرایش افراد</a></li>
         </ul>
     </div>
     <br>
@@ -31,7 +31,7 @@
 
 
         <div class="Per" onclick="click(window.location.assign('/index/edit/{{ i.id }}'))">
-            <div class="info" style="padding-top: 10px"><a>{{ i.Name }} {{i.Family}}</a></div>
+            <div  class="info" style="padding-top: 10px"><div class ="Na" ><a>{{ i.Name }} {{i.Family}}</a></div></div>
             <div class="meli"><a class="meli_a">{{ i.CodeNational }}</a></div>
         </div>
 

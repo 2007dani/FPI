@@ -1,6 +1,6 @@
-from django.db import models
-from django.db.models import Model
-# Create your models here.
-  
-class GeeksModel(Model):
-    geeks_field = models.ImageField()
+from django import forms
+from .models import Person
+class PersonForms(forms.ModelForm):
+    class Meta:
+        model = Person
+        fields = ['upload',]

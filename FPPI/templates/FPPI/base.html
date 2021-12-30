@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Free Web tutorials">
+        <meta name="keywords" content="HTML, CSS">
+        <meta name="author" content="Danial Jamali">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, us">
+        <title>Index of FPI</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index-style.css' %}">
+        <script src="{% static 'js/index.js' %}"></script>
+    </head>
+    <body>
+        <div id="list">
+            <ul>
+                <li id="ShowingPage"><a href="/">خانه</a></li>
+                <li><a href="/add/" class="l">افزودن فرد</a></li>
+                <li><a href="/edit/" class="l">ویرایش افراد</a></li>
+            </ul>
+        </div>
+        <br>
+        
+    </body>
+    
+</html>

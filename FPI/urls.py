@@ -16,15 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,re_path
 from FPPI import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
     path('add/',views.add),
+    path('addfamily/',views.add),
     path('edit/',views.Edit),
     path('index/show/<int:id>/',views.Show),
     path('index/edit/<int:id>/',views.EditSelect),
     path('sumbit/add/',views.Sumbit ,name="S"),
+    path('sumbit/addfamily/',views.Sumbit ,name="SF"),
     path('sumbit/edit/',views.Edit_Sumbit ,name="E"),
     path('delete',views.Delete , name="D")
 ]
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

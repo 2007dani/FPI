@@ -14,8 +14,7 @@ class Person(models.Model):
     Sister =  models.ManyToManyField("Sister")
     Brother =  models.ManyToManyField("Brother")
     Souse =  models.ManyToManyField("Souse")
-    upload = models.ImageField(upload_to ='uploads/', null=1)
-
+    upload = models.ImageField(upload_to ="Profile/", null=1)
 
 
 class Souse(models.Model):

@@ -17,6 +17,7 @@ ul {
 li {
   float: right;
 }
+
 li:hover{
        background-color: #f1f3ff;
 }
@@ -29,7 +30,13 @@ li:hover{
   padding: 12px;
   text-decoration: none;
     font-family: Calibri, Arial, Dubai Medium;
-    font-size: 14px;
+    font-size: 20px;
+  }
+    #Profile{
+        width: 100%;
+        border-radius: 5px;
+        opacity: 90%;
+    }
 }
 label{
     font-size: large;
@@ -47,7 +54,7 @@ select{
     font-size:large;
 
 }
-}
+
 @media only screen and (min-width: 900px) {
   li a {
   display: block;
@@ -56,7 +63,13 @@ select{
   padding: 16px;
   text-decoration: none;
     font-family: Calibri, Arial, Dubai Medium;
-    font-size: large;
+    font-size: x-large;
+  }
+    #Profile{
+        width: 59.9%;
+        border-radius: 5px;
+        opacity: 90%;
+    }
 }
 label{
     font-size: x-large;
@@ -76,14 +89,16 @@ select{
     font-size: large;
     margin-left: 6px;
     margin-right: 6px;
+    font-size: large;
+
 }
 
 
-}
+
 #d{
-    width: 93%;
-    height: 1000px;
-    background-color: #f1f3ff;
+    width: 98%;
+    height: "fit-content";
+    background-color: #e6e7e0;
     margin-right: auto;
     margin-left: auto;
 }
@@ -108,4 +123,24 @@ button{
     font-size: 22px;
     font-family: Calibri;
 }
+#ShowingPage{
+    background:#ffffff;
+}
 
+
+#uplaod{
+    background: #f1f3ff;
+}
+
+.Na{
+    width:100%;
+    height:60px;
+    overflow-y:hidden;
+    overflow-x :scroll;
+        white-space:nowrap;
+}
+
+
+#div_profile{
+    text-align: center;
+}
